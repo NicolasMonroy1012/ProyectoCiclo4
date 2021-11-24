@@ -107,7 +107,7 @@ function checkInputsSi() {
   }
   showPasswordErrors(passwordSIValue, passwordSIValue, form_name);
   if (showPasswordErrors(passwordSIValue, passwordSIValue, form_name)) {
-    ajax({
+    $.ajax({
       url:
         "http://144.22.57.223:8080/api/user/" +
         emailSIValue +
@@ -121,7 +121,7 @@ function checkInputsSi() {
         userVerification(item);
       },
     });
-    clearFields(formName);
+    clearFields(form_name);
   }
 }
 function userVerification(user) {

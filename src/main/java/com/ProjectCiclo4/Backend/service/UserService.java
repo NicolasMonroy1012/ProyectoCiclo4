@@ -43,7 +43,7 @@ public class UserService {
         return userRepository.emailExists(email);
     }
 
-    public User autenticateUsuario(String email, String password) {
+    public User autenticarUsuario(String email, String password) {
         Optional<User> user = userRepository.autenticateUser(email, password);
 
         if (user.isEmpty()) {

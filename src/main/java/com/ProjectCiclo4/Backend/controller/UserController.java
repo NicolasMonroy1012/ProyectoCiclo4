@@ -2,14 +2,13 @@ package com.ProjectCiclo4.Backend.controller;
 
 import com.ProjectCiclo4.Backend.model.User;
 import com.ProjectCiclo4.Backend.repository.UserRepository;
+import com.ProjectCiclo4.Backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
 /**
  *
  * @author Nicolas Monroy
@@ -20,39 +19,25 @@ import java.util.Optional;
 @CrossOrigin("*")
 public class UserController {
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
+    @GetMapping("/all")
     public List<User> getAll() {
-        return userRepository.getAll();
+        return userService.getAll();
     }
 
-    public Optional<User> getUser(int id) {
-        return userRepository.getUser(id);
+    @PostMapping("/new")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User registrar(@RequestBody User user) {
+        return userService.registrar(user);
     }
 
-    public User registrar(User user) {
-        if (user.getId() == null) {
-            if (emailExists(user.getEmail()) == false) {
-                return userRepository.save(user);
-            } else {
-                return user;
-            }
-        } else {
-            return user;
-        }
+    @GetMapping("/{email}/{password}")
+    public User autenticarUsuario(@PathVariable("email") String email, @PathVariable("password") String password) {
+        return userService.autenticarUsuario(email, password);
     }
-
-    public boolean emailExists(String email) {
-        return userRepository.emailExists(email);
-    }
-
-    public User autenticateUser(String email, String password) {
-        Optional<User> user = userRepository.autenticateUser(email, password);
-
-        if (user.isEmpty()) {
-            return new User(email, password, "NO DEFINIDO");
-        } else {
-            return user.get();
-        }
+    @GetMapping("/{email}")
+    public boolean existeEmail(@PathVariable("email") String email) {
+        return userService.existeEmail(email);
     }
 }

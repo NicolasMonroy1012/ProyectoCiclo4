@@ -11,13 +11,18 @@
         <div class="form-container sign-up-container">
             <form action="#">
                 <h1>Crear cuenta</h1>
-                <span>Usa tu email y Crea una Contraseña para registrarte</span>
-                <input type="text" placeholder="Nombre de Usuario" />
-                <input type="email" placeholder="E-mail" />
-                <input type="password" placeholder="Contraseña" />
-                <input type="password" placeholder="Confirmar Contraseña"/>
                 <br/>
-                <button>Registrarse</button>
+                <span>Usa tu email y crea una contraseña para registrarte</span>
+                <br/>
+                <small id='error'></small>
+                <br/>
+                <div></div>
+                <input type="text" placeholder="Nombre de Usuario" id="user_name" />
+                <input type="email" placeholder="E-mail" id="email"/>
+                <input type="password" placeholder="Contraseña" id="password" />
+                <input type="password" placeholder="Confirmar Contraseña" id="confirm_password" />
+                <br/>
+                <button type="submit" onclick="return enviarRegForm()">Registrarse</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
@@ -40,7 +45,7 @@
                 <div class="overlay-panel overlay-right">
                     <h1>Hola!</h1>
                     <p>Ingresa tu datos personales para crear una cuenta y tener acceso a más</p>
-                    <button class="ghost" id="signUp">Registrarse</button>
+                    <button  class="ghost" id="signUp">Registrarse</button>
                 </div>
             </div>
         </div>

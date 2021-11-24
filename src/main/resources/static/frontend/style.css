@@ -37,7 +37,7 @@ span {
 
 a {
 	color: #000;
-	font-size: 14px;
+	font-size: 16px;
 	text-decoration: none;
 	margin: 15px 0;
 }
@@ -100,7 +100,7 @@ ion-icon{
 	overflow: hidden;
 	width: 768px;
 	max-width: 100%;
-	min-height: 480px;
+	min-height: 550px;
 }
 
 .form-container {
@@ -145,7 +145,10 @@ ion-icon{
 		z-index: 5;
 	}
 }
-
+.error{
+	font-size: 10px;
+	animation: show 0.4s;
+}
 .overlay-container {
 	position: absolute;
 	top: 0;

@@ -6,18 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de sesion | De alto Tumerqué LTDA</title>
     <link rel="stylesheet" href="style.css">
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
-      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+        integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous" />
 </head>
 
 <body>
-    <div class="alert">
+    <div class="alert show">
         <span class="fas fa-exclamation-circle"></span>
         <span class="msg"></span>
+        <span class="close_btn">
+            <span class="fas fa-times"></span>
+        </span>
     </div>
     <div class="container" id="container">
         <div class="form-container sign-up-container">
@@ -53,11 +52,11 @@
                     <small id='error'>Error message</small>
                 </div>
                 <br />
-                <button type="submit" >Registrarse</button>
+                <button type="submit">Registrarse</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form  id="form_si" action="/" method="GET">
+            <form id="form_si" action="/" method="GET">
                 <br />
                 <br />
                 <br />
@@ -67,7 +66,7 @@
                 <br />
                 <br />
                 <div class="form_si">
-                    <input type="email" placeholder="E-mail" id="emailSI"/>
+                    <input type="email" placeholder="E-mail" id="emailSI" />
                     <i class="fas fa-check-circle"></i>
                     <i class="fas fa-exclamation-circle"></i>
                     <small id='error'>Error message</small>
@@ -103,4 +102,5 @@
 </body>
 <script src="sourcefunc.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 </html>

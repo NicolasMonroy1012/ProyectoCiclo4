@@ -95,10 +95,15 @@ form {
   animation: show_slide 1s ease forwards;
 }
 
+.alert.hide{
+  display: none;
+}
+
 @keyframes show_slide {
   0%{
     transform: translateX(100%);
   }
+
 }
 
 .alert .fa-exclamation-circle{

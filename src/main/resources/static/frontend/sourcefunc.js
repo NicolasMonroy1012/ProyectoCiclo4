@@ -1,5 +1,6 @@
 const form_regF = document.getElementById("form_reg");
 const form_siF = document.getElementById("form_si");
+const msg = document.getElementById("msg");
 const user_name = document.getElementById("user_name");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
@@ -12,11 +13,25 @@ const signInButton = document.getElementById("signIn");
 const container = document.getElementById("container");
 
 signUpButton.addEventListener("click", () => {
+  const form_name = "si";
   container.classList.add("right-panel-active");
+  clearFields(form_name);
+  resetStates(emailSI, form_name);
+  resetStates(passwordSI, form_name);
+  $(".alert").addClass("hide");
+  $(".alert").removeClass("show");
 });
 
 signInButton.addEventListener("click", () => {
+  const form_name = "reg";
   container.classList.remove("right-panel-active");
+  clearFields(form_name);
+  resetStates(user_name, form_name);
+  resetStates(email, form_name);
+  resetStates(password, form_name);
+  resetStates(confirm_password, form_name);
+  $(".alert").addClass("hide");
+  $(".alert").removeClass("show");
 });
 
 form_reg.addEventListener("submit", (e) => {
@@ -54,6 +69,20 @@ function checkInputsReg() {
   }
 }
 
+function close_btn() {
+  $(".close_btn").click(function () {
+    const form_name = "si";
+    $(".alert").addClass("hide");
+    $(".alert").removeClass("show");
+    $("#password").val("");
+    $("#confirm_password").val("");
+    $("#passwordSI").val("");
+    resetStates(password, form_name);
+    resetStates(confirm_password, form_name);
+    resetStates(passwordSI, form_name);
+  });
+}
+
 function checkInputsSi() {
   const form_name = "si";
   let emailSIValue = $("#emailSI").val();
@@ -74,11 +103,11 @@ function checkInputsSi() {
         emailSIValue +
         "/" +
         passwordSIValue +
-        "", /*"http://localhost:8080/api/user/" +
+        "" /*"http://localhost:8080/api/user/" +
         emailSIValue +
         "/" +
         passwordSIValue +
-        "",*/
+        "",*/,
       type: "GET",
       datatype: "JSON",
       success: function (item) {
@@ -87,6 +116,8 @@ function checkInputsSi() {
       },
     });
     clearFields(form_name);
+    resetStates(emailSI, form_name);
+    resetStates(passwordSI, form_name);
   }
 }
 
@@ -110,6 +141,16 @@ function setSuccessFor(input) {
   form_reg.className = "form_reg success";
 }
 
+function setErrorMessageFor(input, errorList) {
+  const msg = input.parentElement;
+  if (input == "passwordSI") {
+    msg.className = "form_si error";
+  }
+  msg.className = "form_reg error";
+  $(".alert").removeClass("hide");
+  $("#msg").text("" + errorList);
+}
+
 function isEmail(email) {
   const regExp =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -119,19 +160,19 @@ function isEmail(email) {
 let passwordValidDefinition = [
   {
     minLength: 6,
-    ErrorMessage: "Tu contraseña debe tener como minimo 6 caracteres.",
+    ErrorMessage: "Tu contraseña debe tener como minimo 6 caracteres",
   },
   {
     maxLength: 16,
-    ErrorMessage: "Tu contraseña debe tener como maximo 16 caracteres.",
+    ErrorMessage: " Tu contraseña debe tener como maximo 16 caracteres",
   },
   {
     regex: /.*\d/,
-    ErrorMessage: "Tu contraseña debe contener al menos 1 digito.",
+    ErrorMessage: " Tu contraseña debe contener al menos 1 digito",
   },
   {
     regex: /.*[a-zA-Z]/,
-    ErrorMessage: "Tu contraseña debe contener al menos 1 letra.",
+    ErrorMessage: " Tu contraseña debe contener al menos 1 letra",
   },
 ];
 /**
@@ -199,7 +240,6 @@ function showPasswordErrors(passwordC, confirm_passwordC, form_name) {
     if (passwordC !== confirm_passwordC) {
       msg = "La contraseña y la contraseña de confirmación no coinciden.";
       setErrorFor(password, msg);
-      console.log(passwordC + " " + confirm_passwordC);
       i = 1;
     }
     if (passwordC === "" || passwordC === null) {
@@ -215,8 +255,10 @@ function showPasswordErrors(passwordC, confirm_passwordC, form_name) {
       i = 1;
     }
     if (i === 0 && valid === false) {
-      setErrorFor(password, errorList);
-      setErrorFor(confirm_password, errorList);
+      setErrorMessageFor(password, errorList);
+      setErrorMessageFor(confirm_password, errorList);
+      $("#password").val("");
+      $("#confirm_password").val("");
     }
   } else {
     if (valid) {
@@ -228,11 +270,14 @@ function showPasswordErrors(passwordC, confirm_passwordC, form_name) {
       i = 1;
     }
     if (i === 0 && valid === false) {
-      setErrorFor(passwordSI, errorList);
+      setErrorMessageFor(passwordSI, errorList);
+      $("#password").val("");
+      $("#confirm_password").val("");
     }
   }
   return valid;
 }
+
 function clearFields(form_name) {
   if (form_name === "reg") {
     $("#user_name").val("");
@@ -244,6 +289,17 @@ function clearFields(form_name) {
     $("#passwordSI").val("");
   }
 }
+
+function resetStates(input, form_name) {
+  if (form_name === "reg") {
+    const form_reg = input.parentElement;
+    form_reg.className = "form_reg";
+  } else {
+    const form_si = input.parentElement;
+    form_si.className = "form_si";
+  }
+}
+
 function createNewUser(user_nameValue, emailValue, passwordValue, form_name) {
   console.log("ingrese a new user");
   if (emailVerification(emailValue)) {
@@ -257,7 +313,7 @@ function createNewUser(user_nameValue, emailValue, passwordValue, form_name) {
     };
     let dataToSend = JSON.stringify(myData);
     $.ajax({
-      url: "http://144.22.57.223:8080/api/user/new",/* "http://localhost:8080/api/user/new",*/
+      url: "http://144.22.57.223:8080/api/user/new" /* "http://localhost:8080/api/user/new",*/,
       type: "POST",
       data: dataToSend,
       contentType: "application/json; charset=utf-8",
@@ -265,6 +321,10 @@ function createNewUser(user_nameValue, emailValue, passwordValue, form_name) {
       success: function (answer) {
         alert("Se ha registrado con éxito");
         clearFields(form_name);
+        resetStates(user_name, form_name);
+        resetStates(email, form_name);
+        resetStates(password, form_name);
+        resetStates(confirm_password, form_name);
       },
     });
   }
@@ -273,9 +333,11 @@ function emailVerification(email) {
   let emailComp = false;
   $.ajax({
     url:
-      "http://144.22.57.223:8080/api/user/" + email + "",/* "http://localhost:8080/api/user/" +
+      "http://144.22.57.223:8080/api/user/" +
       email +
-      "",*/
+      "" /* "http://localhost:8080/api/user/" +
+      email +
+      "",*/,
     async: false,
     type: "GET",
     datatype: "JSON",

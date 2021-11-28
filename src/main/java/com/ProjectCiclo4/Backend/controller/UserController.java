@@ -5,13 +5,13 @@ import com.ProjectCiclo4.Backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 /**
- *
  * This class allows mapping the entity user
- * @author Nicolas Monroy
  *
+ * @author Nicolas Monroy
  */
 @RestController
 @RequestMapping("/api/user")
@@ -25,6 +25,7 @@ public class UserController {
 
     /**
      * Map the table user and bring all users
+     *
      * @return a list of users in DB
      */
     @GetMapping("/all")
@@ -34,6 +35,7 @@ public class UserController {
 
     /**
      * Allows to map a new user registration
+     *
      * @param user object that contains info of the user
      * @return user register or the user
      */
@@ -45,7 +47,8 @@ public class UserController {
 
     /**
      * Allows mapping if a user exist or not in the DB
-     * @param email String containing the email of the user
+     *
+     * @param email    String containing the email of the user
      * @param password String containing the passcode of the user
      * @return the user or user with undefined name
      */
@@ -56,6 +59,7 @@ public class UserController {
 
     /**
      * Allows mapping if an email exits or not
+     *
      * @param email String containing the email of the user
      * @return true or false if email exists
      */
@@ -66,8 +70,14 @@ public class UserController {
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public User update(@RequestBody User user){
+    public User update(@RequestBody User user) {
         return userService.update(user);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id) {
+        return userService.delete(id);
     }
 
 }

@@ -19,7 +19,7 @@ public class Clothe {
     private String reference;
     private String category;
     private String size;
-    private String material;
+    //private String material;
     private String description;
     private boolean availability = true;
     private double price;

@@ -19,15 +19,22 @@ public class UserRepository {
     private UserCRUDRepository userCRUDRepository;
 
     public List<User>getAll(){return (List<User>) userCRUDRepository.findAll();}
+
     public Optional<User>getUser(int id){return userCRUDRepository.findById(id);}
+
     public User save(User user){return userCRUDRepository.save(user);}
+
     public boolean emailExists(String email) {
         Optional<User> user = userCRUDRepository.findByEmail(email);
-
         return !user.isEmpty();
     }
 
-    public Optional<User> autenticateUser(String email, String password) {
+    public Optional<User> authenticateUser(String email, String password) {
         return userCRUDRepository.findByEmailAndPassword(email, password);
+    }
+
+
+    public void update(User user) {
+        userCRUDRepository.save(user);
     }
 }

@@ -58,7 +58,8 @@ function checkInputsReg() {
   }
   if (emailValue === "" || emailValue === null) {
     setErrorFor(email, "El email no puede estar vacio");
-  } else if (!isEmail(emailValue)) {
+  }
+  if (!isEmail(emailValue)) {
     setErrorFor(email, "El email no es valido");
   } else {
     setSuccessFor(email);
@@ -90,7 +91,8 @@ function checkInputsSi() {
 
   if (emailSIValue === "" || emailSIValue === null) {
     setErrorFor(emailSI, "El email no puede estar vacio");
-  } else if (!isEmail(emailSIValue)) {
+  }
+  if (!isEmail(emailSIValue)) {
     setErrorFor(emailSI, "El email no es valido");
   } else {
     setSuccessFor(emailSI);

@@ -1,14 +1,12 @@
 package com.ProjectCiclo4.Backend.controller;
 
 import com.ProjectCiclo4.Backend.model.User;
-import com.ProjectCiclo4.Backend.repository.UserRepository;
 import com.ProjectCiclo4.Backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
-import java.util.Optional;
+
 /**
  *
  * This class allows mapping the entity user
@@ -20,7 +18,7 @@ import java.util.Optional;
 @CrossOrigin("*")
 public class UserController {
     @Autowired
-    /**
+    /*
      * Instance of UserService class
      */
     private UserService userService;
@@ -36,33 +34,40 @@ public class UserController {
 
     /**
      * Allows to map a new user registration
-     * @param user
+     * @param user object that contains info of the user
      * @return user register or the user
      */
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
-    public User registrar(@RequestBody User user) {
-        return userService.registrar(user);
+    public User register(@RequestBody User user) {
+        return userService.register(user);
     }
 
     /**
-     * Allows to map if an user exist or not in the DB
-     * @param email
-     * @param password
+     * Allows mapping if a user exist or not in the DB
+     * @param email String containing the email of the user
+     * @param password String containing the passcode of the user
      * @return the user or user with undefined name
      */
     @GetMapping("/{email}/{password}")
-    public User autenticarUsuario(@PathVariable("email") String email, @PathVariable("password") String password) {
-        return userService.autenticarUsuario(email, password);
+    public User authenticateUser(@PathVariable("email") String email, @PathVariable("password") String password) {
+        return userService.authenticateUser(email, password);
     }
 
     /**
-     * Allows to map if an email exits or not
-     * @param email
-     * @return true or false
+     * Allows mapping if an email exits or not
+     * @param email String containing the email of the user
+     * @return true or false if email exists
      */
-    @GetMapping("/{email}")
-    public boolean existeEmail(@PathVariable("email") String email) {
-        return userService.existeEmail(email);
+    @GetMapping("/emailexist/{email}")
+    public boolean emailExists(@PathVariable("email") String email) {
+        return userService.emailExists(email);
     }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User update(@RequestBody User user){
+        return userService.update(user);
+    }
+
 }

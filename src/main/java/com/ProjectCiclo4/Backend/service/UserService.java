@@ -9,9 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- *
  * @author Nicolas Monroy
- *
  */
 @Service
 public class UserService {
@@ -27,10 +25,64 @@ public class UserService {
         return userRepository.getUser(id);
     }
 
-    public User registrar(User user) {
+    public User register(User user) {
         if (user.getId() == null) {
-            if (existeEmail(user.getEmail()) == false) {
+            return user;
+        } else {
+            if (emailExists(user.getEmail()) == false) {
                 return userRepository.save(user);
+            } else {
+                return user;
+            }
+        }
+    }
+
+    public boolean emailExists(String email) {
+        return userRepository.emailExists(email);
+    }
+
+    public User authenticateUser(String email, String password) {
+        Optional<User> user = userRepository.authenticateUser(email, password);
+
+        if (user.isEmpty()) {
+            return new User();
+        } else {
+            return user.get();
+        }
+    }
+
+
+    public User update(User user) {
+        Optional<User> userDB = userRepository.getUser(user.getId());
+        if (user.getId() != null) {
+            if (!userDB.isEmpty()) {
+                if (user.getIdentification() != null) {
+                    userDB.get().setIdentification(user.getIdentification());
+                }
+                if (user.getName() != null) {
+                    userDB.get().setName(user.getName());
+                }
+                if (user.getAddress() != null) {
+                    userDB.get().setAddress(user.getAddress());
+                }
+                if (user.getCellPhone() != null) {
+                    userDB.get().setCellPhone(user.getCellPhone());
+                }
+                if (user.getEmail() != null) {
+                    userDB.get().setEmail(user.getEmail());
+                }
+                if (user.getPassword() != null) {
+                    userDB.get().setPassword(user.getPassword());
+                }
+
+                if (user.getZone() != null) {
+                    userDB.get().setZone(user.getZone());
+                }
+                if (user.getType() != null) {
+                    userDB.get().setType(user.getType());
+                }
+                userRepository.update(userDB.get());
+                return userDB.get();
             } else {
                 return user;
             }
@@ -38,21 +90,5 @@ public class UserService {
             return user;
         }
     }
-
-    public boolean existeEmail(String email) {
-        return userRepository.emailExists(email);
-    }
-
-    public User autenticarUsuario(String email, String password) {
-        Optional<User> user = userRepository.autenticateUser(email, password);
-
-        if (user.isEmpty()) {
-            return new User(email, password, "NO DEFINIDO");
-        } else {
-            return user.get();
-        }
-    }
-
-
 }
 

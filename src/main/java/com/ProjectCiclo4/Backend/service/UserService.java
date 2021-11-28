@@ -51,7 +51,6 @@ public class UserService {
         }
     }
 
-
     public User update(User user) {
         Optional<User> userDB = userRepository.getUser(user.getId());
         if (user.getId() != null) {
@@ -89,6 +88,14 @@ public class UserService {
         } else {
             return user;
         }
+    }
+
+    public boolean delete(int userId) {
+        Boolean aBoolean = getUser(userId).map(user -> {
+            userRepository.delete(user);
+            return true;
+        }).orElse(false);
+        return aBoolean;
     }
 }
 

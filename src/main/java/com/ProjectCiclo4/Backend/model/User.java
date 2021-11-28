@@ -2,8 +2,7 @@ package com.ProjectCiclo4.Backend.model;
 
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
 import java.io.Serializable;
 
 /**

@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Id;
 
-import javax.persistence.Id;
 
 /**
  * @author Nicolas Monroy
@@ -14,11 +14,12 @@ import javax.persistence.Id;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Clothes {
+public class Clothe {
     @Id
     private String reference;
     private String category;
     private String size;
+    private String material;
     private String description;
     private boolean availability = true;
     private double price;

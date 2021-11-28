@@ -17,20 +17,40 @@ import java.util.Optional;
 @CrossOrigin("*")
 public class ClothesController {
     @Autowired
+    /*
+     * Instance of ClothesService class
+     */
     private ClothesService clothesService;
 
     @GetMapping("/all")
+    /**
+     * Map the table user and bring all users
+     *
+     * @return a list of clothes in DB
+     */
     public List<Clothe> getAll() {
         return clothesService.getAll();
     }
 
     @GetMapping("/{reference}")
+    /**
+     * Allows to map a new user registration
+     *
+     * @param user object that contains info of the clothes
+     * @return user register or the user
+     */
     public Optional<Clothe> getClothe(@PathVariable("reference") String reference) {
         return clothesService.getClothe(reference);
     }
 
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
+    /**
+     * Allows to map a new user registration
+     *
+     * @param user object that contains info of the user
+     * @return user register or the user
+     */
     public Clothe create(@RequestBody Clothe clothe) {
         return clothesService.create(clothe);
     }

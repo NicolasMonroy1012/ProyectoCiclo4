@@ -80,6 +80,53 @@ form {
   text-align: center;
 }
 
+select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 2px solid #f0f0f0;
+  border-radius: 15px;
+  background: #fff;
+  background-image: none ;
+}
+select::-ms-expand{
+  display: none;
+}
+.select{
+  position: relative;
+  display: flex;
+  width: 20 em;
+  height: 3em;
+  line-height: 3;
+  background: rgb(227, 228, 228);
+  overflow: hidden;
+  border-radius: 15px;
+}
+select{
+  flex: 1;
+  padding: 0 .5em;
+  color: #000;
+  cursor: pointer;
+}
+.select::after{
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #000;
+  cursor: pointer;
+  pointer-events: none;
+  transition: .25s all ease;
+}
+.select:hover::after{
+  color: #fff;
+}
+
+
 .alert{
   background-color: #c44d4d;
   padding: 20px 40px;
@@ -150,7 +197,7 @@ form {
   overflow: hidden;
   width: 800px;
   max-width: 100%;
-  min-height: 550px;
+  min-height: 800px;
 }
 
 .form-container {

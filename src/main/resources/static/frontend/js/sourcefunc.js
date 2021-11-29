@@ -101,15 +101,15 @@ function checkInputsSi() {
   if (showPasswordErrors(passwordSIValue, passwordSIValue, form_name)) {
     $.ajax({
       url:
-        "http://144.22.57.223:8080/api/user/" +
+        /*"http://144.22.57.223:8080/api/user/" +
         emailSIValue +
         "/" +
         passwordSIValue +
-        "" /*"http://localhost:8080/api/user/" +
+        ""*/ "http://localhost:8080/api/user/" +
         emailSIValue +
         "/" +
         passwordSIValue +
-        "",*/,
+        "",
       type: "GET",
       datatype: "JSON",
       success: function (item) {
@@ -315,7 +315,7 @@ function createNewUser(user_nameValue, emailValue, passwordValue, form_name) {
     };
     let dataToSend = JSON.stringify(myData);
     $.ajax({
-      url: "http://144.22.57.223:8080/api/user/new" /* "http://localhost:8080/api/user/new",*/,
+      url: /*"http://144.22.57.223:8080/api/user/new"*/ "http://localhost:8080/api/user/new",
       type: "POST",
       data: dataToSend,
       contentType: "application/json; charset=utf-8",
@@ -335,11 +335,11 @@ function emailVerification(email) {
   let emailComp = false;
   $.ajax({
     url:
-      "http://144.22.57.223:8080/api/user/" +
+      /*"http://144.22.57.223:8080/api/user/" +
       email +
-      "" /* "http://localhost:8080/api/user/" +
+      "" */ "http://localhost:8080/api/user/" +
       email +
-      "",*/,
+      "",
     async: false,
     type: "GET",
     datatype: "JSON",

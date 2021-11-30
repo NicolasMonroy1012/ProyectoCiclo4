@@ -5,7 +5,7 @@
 
 body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url(/bg.png);
+    url(/images/bg.png);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,27 +13,6 @@ body {
   font-family: "Reem Kufi", sans-serif;
   height: 100vh;
   margin: -20px 0 50px;
-}
-
-h1 {
-  font-weight: bold;
-  margin: 0;
-}
-
-h2 {
-  text-align: center;
-}
-
-p {
-  font-size: 14px;
-  font-weight: 100;
-  line-height: 20px;
-  letter-spacing: 0.5px;
-  margin: 20px 0 30px;
-}
-
-span {
-  font-size: 12px;
 }
 
 a {
@@ -79,55 +58,7 @@ form {
   height: 100%;
   text-align: center;
 }
-
-select{
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  outline: 0;
-  box-shadow: none;
-  border: 2px solid #f0f0f0;
-  border-radius: 15px;
-  background: #fff;
-  background-image: none ;
-}
-select::-ms-expand{
-  display: none;
-}
-.select{
-  position: relative;
-  display: flex;
-  width: 20 em;
-  height: 3em;
-  line-height: 3;
-  background: rgb(227, 228, 228);
-  overflow: hidden;
-  border-radius: 15px;
-}
-select{
-  flex: 1;
-  padding: 0 .5em;
-  color: #000;
-  cursor: pointer;
-}
-.select::after{
-  content: '\25BC';
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0 1em;
-  background: #000;
-  cursor: pointer;
-  pointer-events: none;
-  transition: .25s all ease;
-}
-.select:hover::after{
-  color: #fff;
-}
-
-
-.alert{
+.alert {
   background-color: #c44d4d;
   padding: 20px 40px;
   min-width: 420px;
@@ -138,22 +69,21 @@ select{
   border-left: 8px solid #800000;
 }
 
-.alert.show{
+.alert.show {
   animation: show_slide 1s ease forwards;
 }
 
-.alert.hide{
+.alert.hide {
   display: none;
 }
 
 @keyframes show_slide {
-  0%{
+  0% {
     transform: translateX(100%);
   }
-
 }
 
-.alert .fa-exclamation-circle{
+.alert .fa-exclamation-circle {
   position: absolute;
   left: 20px;
   top: 50%;
@@ -162,13 +92,13 @@ select{
   font-size: 30px;
 }
 
-.alert .msg{
+.alert .msg {
   padding: 0 20px;
   font-size: 18px;
   color: #800000;
 }
 
-.alert .close_btn{
+.alert .close_btn {
   position: absolute;
   right: 0px;
   top: 50%;
@@ -179,11 +109,11 @@ select{
   cursor: pointer;
 }
 
-.close_btn:hover{
-  background-color: #A23232;
+.close_btn:hover {
+  background-color: #a23232;
 }
 
-.close_btn .fa-times{
+.close_btn .fa-times {
   color: 800e13;
   font-size: 22px;
   line-height: 40px;
@@ -195,76 +125,15 @@ select{
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
   overflow: hidden;
-  width: 800px;
+  width: 450px;
   max-width: 100%;
-  min-height: 800px;
-}
-
-.form-container {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  transition: all 0.6s ease-in-out;
-}
-
-.sign-in-container {
-  left: 0;
-  width: 50%;
-  z-index: 2;
-}
-
-.container.right-panel-active .sign-in-container {
-  transform: translateX(100%);
-}
-
-.sign-up-container {
-  left: 0;
-  width: 50%;
-  opacity: 0;
-  z-index: 1;
-}
-
-.container.right-panel-active .sign-up-container {
-  transform: translateX(100%);
-  opacity: 1;
-  z-index: 5;
-  animation: show 0.6s;
-}
-
-@keyframes show {
-  0%,
-  49.99% {
-    opacity: 0;
-    z-index: 1;
-  }
-
-  50%,
-  100% {
-    opacity: 1;
-    z-index: 5;
-  }
-}
-
-.form_reg {
-  margin-bottom: 10px;
-  padding-bottom: 20px;
-  position: relative;
+  min-height: 600px;
 }
 
 .form_si {
   margin-bottom: 10px;
   padding-bottom: 20px;
   position: relative;
-}
-
-.form_reg input {
-  border: 2px solid #f0f0f0;
-  border-radius: 15px;
-  font-family: inherit;
-  font-size: 14px;
-  display: block;
-  padding: 10px;
-  width: 100%;
 }
 
 .form_si input {
@@ -277,24 +146,10 @@ select{
   width: 100%;
 }
 
-.form_reg i {
-  position: absolute;
-  top: 14px;
-  right: 10px;
-  visibility: hidden;
-}
-
 .form_si i {
   position: absolute;
   top: 14px;
   right: 10px;
-  visibility: hidden;
-}
-
-.form_reg small {
-  position: absolute;
-  bottom: 0;
-  left: 5px;
   visibility: hidden;
 }
 
@@ -305,115 +160,29 @@ select{
   visibility: hidden;
 }
 
-.overlay-container {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 50%;
-  height: 100%;
-  overflow: hidden;
-  transition: transform 0.6s ease-in-out;
-  z-index: 100;
+.form_si.success input {
+  border-color: #2ecc71;
 }
 
-.container.right-panel-active .overlay-container {
-  transform: translateX(-100%);
+.form_si.error input {
+  border-color: #e74c3c;
 }
 
-.overlay {
-  background: #0077b6;
-  background: -webkit-linear-gradient(to right, #0077b6, #90e0ef);
-  background: linear-gradient(to right, #0077b6, #90e0ef);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 0;
-  color: #ffffff;
-  position: relative;
-  left: -100%;
-  height: 100%;
-  width: 200%;
-  transform: translateX(0);
-  transition: transform 0.6s ease-in-out;
+.form_si.success i.fa-check-circle {
+  visibility: visible;
+  color: #2ecc71;
 }
 
-.container.right-panel-active .overlay {
-  transform: translateX(50%);
+.form_si.error i.fa-exclamation-circle {
+  visibility: visible;
+  color: #e74c3c;
 }
 
-.overlay-panel {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 40px;
-  text-align: center;
-  top: 0;
-  height: 100%;
-  width: 50%;
-  transform: translateX(0);
-  transition: transform 0.6s ease-in-out;
+.form_si.error small {
+  color: #e74c3c;
+  visibility: visible;
 }
 
-.overlay-left {
-  transform: translateX(-20%);
-}
-
-.container.right-panel-active .overlay-left {
-  transform: translateX(0);
-}
-
-.overlay-right {
-  right: 0;
-  transform: translateX(0);
-}
-
-.container.right-panel-active .overlay-right {
-  transform: translateX(20%);
-}
-
-.form_reg.success input{
-	border-color: #2ecc71;
-}
-
-.form_reg.error input{
-	border-color: #e74c3c;
-}
-
-.form_reg.success i.fa-check-circle{
-	visibility: visible;
-	color:  #2ecc71;
-}
-
-.form_reg.error i.fa-exclamation-circle{
-	visibility: visible;
-	color:  #e74c3c;
-}
-
-.form_reg.error small{
-	color: #e74c3c;
-	visibility: visible;
-}
-
-.form_si.success input{
-	border-color: #2ecc71;
-}
-
-.form_si.error input{
-	border-color: #e74c3c;
-}
-
-.form_si.success i.fa-check-circle{
-	visibility: visible;
-	color:  #2ecc71;
-}
-
-.form_si.error i.fa-exclamation-circle{
-	visibility: visible;
-	color:  #e74c3c;
-}
-
-.form_si.error small{
-	color: #e74c3c;
-	visibility: visible;
+.logo-box{
+    text-align: center;
 }

@@ -1,93 +1,33 @@
-const form_regF = document.getElementById("form_reg");
 const form_siF = document.getElementById("form_si");
 const msg = document.getElementById("msg");
-const user_name = document.getElementById("user_name");
-const email = document.getElementById("email");
-const password = document.getElementById("password");
-const confirm_password = document.getElementById("confirm_password");
 const emailSI = document.getElementById("emailSI");
 const passwordSI = document.getElementById("passwordSI");
-let error = document.getElementById("error");
-const signUpButton = document.getElementById("signUp");
-const signInButton = document.getElementById("signIn");
-const container = document.getElementById("container");
-
-signUpButton.addEventListener("click", () => {
-  const form_name = "si";
-  container.classList.add("right-panel-active");
-  clearFields(form_name);
-  resetStates(emailSI, form_name);
-  resetStates(passwordSI, form_name);
-  $(".alert").addClass("hide");
-  $(".alert").removeClass("show");
-});
-
-signInButton.addEventListener("click", () => {
-  const form_name = "reg";
-  container.classList.remove("right-panel-active");
-  clearFields(form_name);
-  resetStates(user_name, form_name);
-  resetStates(email, form_name);
-  resetStates(password, form_name);
-  resetStates(confirm_password, form_name);
-  $(".alert").addClass("hide");
-  $(".alert").removeClass("show");
-});
-
-form_reg.addEventListener("submit", (e) => {
-  e.preventDefault();
-  checkInputsReg();
-});
+let myBody = document.getElementsByTagName("body");
 
 form_si.addEventListener("submit", (e) => {
   e.preventDefault();
   checkInputsSi();
 });
 
-function checkInputsReg() {
-  const form_name = "reg";
-  let user_nameValue = $("#user_name").val();
-  let emailValue = $("#email").val();
-  let passwordValue = $("#password").val();
-  let confirm_passwordValue = $("#confirm_password").val();
-
-  if (user_nameValue === "" || user_nameValue === null) {
-    setErrorFor(user_name, "El nombre de usuario no puede estar vacio");
-  } else {
-    setSuccessFor(user_name);
-  }
-  if (emailValue === "" || emailValue === null) {
-    setErrorFor(email, "El email no puede estar vacio");
-  }
-  if (!isEmail(emailValue)) {
-    setErrorFor(email, "El email no es valido");
-  } else {
-    setSuccessFor(email);
-  }
-  showPasswordErrors(passwordValue, confirm_passwordValue, form_name);
-  if (showPasswordErrors(passwordValue, confirm_passwordValue, form_name)) {
-    createNewUser(user_nameValue, emailValue, passwordValue, form_name);
-  }
-}
-
 function close_btn() {
   $(".close_btn").click(function () {
     const form_name = "si";
     $(".alert").addClass("hide");
     $(".alert").removeClass("show");
-    $("#password").val("");
-    $("#confirm_password").val("");
     $("#passwordSI").val("");
-    resetStates(password, form_name);
-    resetStates(confirm_password, form_name);
     resetStates(passwordSI, form_name);
   });
+}
+
+function onClickFun() {
+  document.location.href = "home.html";
 }
 
 function checkInputsSi() {
   const form_name = "si";
   let emailSIValue = $("#emailSI").val();
   let passwordSIValue = $("#passwordSI").val();
+  let i = 0;
 
   if (emailSIValue === "" || emailSIValue === null) {
     setErrorFor(emailSI, "El email no puede estar vacio");
@@ -98,14 +38,19 @@ function checkInputsSi() {
     setSuccessFor(emailSI);
   }
   showPasswordErrors(passwordSIValue, passwordSIValue, form_name);
-  if (showPasswordErrors(passwordSIValue, passwordSIValue, form_name)) {
+  let checkPassVal = showPasswordErrors(
+    passwordSIValue,
+    passwordSIValue,
+    form_name
+  );
+  if (checkPassVal === true) {
     $.ajax({
       url:
         /*"http://144.22.57.223:8080/api/user/" +
-        emailSIValue +
-        "/" +
-        passwordSIValue +
-        ""*/ "http://localhost:8080/api/user/" +
+          emailSIValue +
+          "/" +
+          passwordSIValue +
+          ""*/ "http://localhost:8080/api/user/" +
         emailSIValue +
         "/" +
         passwordSIValue +
@@ -124,10 +69,17 @@ function checkInputsSi() {
 }
 
 function userVerification(user) {
-  if (user.name === "NO DEFINIDO") {
+  let value;
+  if (user.name === null) {
+    value = false;
     alert("Usted no se encuentra registrado, por favor cree una cuenta");
   } else {
+    value = true;
     alert("Bienvenido " + user.name);
+  }
+  console.log(value);
+  if (value === true) {
+    onClickFun();
   }
 }
 
@@ -135,12 +87,12 @@ function setErrorFor(input, message) {
   const form_reg = input.parentElement;
   const small = form_reg.querySelector("small");
   small.innerText = message;
-  form_reg.className = "form_reg error";
+  form_reg.className = "form_si error";
 }
 
 function setSuccessFor(input) {
   const form_reg = input.parentElement;
-  form_reg.className = "form_reg success";
+  form_reg.className = "form_si success";
 }
 
 function setErrorMessageFor(input, errorList) {
@@ -148,7 +100,7 @@ function setErrorMessageFor(input, errorList) {
   if (input == "passwordSI") {
     msg.className = "form_si error";
   }
-  msg.className = "form_reg error";
+  msg.className = "form_si error";
   $(".alert").removeClass("hide");
   $("#msg").text("" + errorList);
 }
@@ -300,54 +252,4 @@ function resetStates(input, form_name) {
     const form_si = input.parentElement;
     form_si.className = "form_si";
   }
-}
-
-function createNewUser(user_nameValue, emailValue, passwordValue, form_name) {
-  console.log("ingrese a new user");
-  if (emailVerification(emailValue)) {
-    alert("El email ingresado ya existe");
-    clearFields(form_name);
-  } else {
-    let myData = {
-      name: $("#user_name").val(),
-      email: $("#email").val(),
-      password: $("#password").val(),
-    };
-    let dataToSend = JSON.stringify(myData);
-    $.ajax({
-      url: /*"http://144.22.57.223:8080/api/user/new"*/ "http://localhost:8080/api/user/new",
-      type: "POST",
-      data: dataToSend,
-      contentType: "application/json; charset=utf-8",
-      datatype: "JSON",
-      success: function (answer) {
-        alert("Se ha registrado con éxito");
-        clearFields(form_name);
-        resetStates(user_name, form_name);
-        resetStates(email, form_name);
-        resetStates(password, form_name);
-        resetStates(confirm_password, form_name);
-      },
-    });
-  }
-}
-function emailVerification(email) {
-  let emailComp = false;
-  $.ajax({
-    url:
-      /*"http://144.22.57.223:8080/api/user/" +
-      email +
-      "" */ "http://localhost:8080/api/user/" +
-      email +
-      "",
-    async: false,
-    type: "GET",
-    datatype: "JSON",
-    //async: false,
-    success: function (answer) {
-      console.log(answer);
-      emailComp = answer;
-    },
-  });
-  return emailComp;
 }

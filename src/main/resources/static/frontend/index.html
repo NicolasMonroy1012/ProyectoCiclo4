@@ -3,131 +3,55 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de sesion | De alto Tumerqué LTDA</title>
     <link rel="stylesheet" href="styles/styleIndex.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
-        integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+    <title>Inicio de sesion | De alto Tumerqué LTDA</title>
 </head>
 
 <body>
-    <div class="alert hide">
-        <span class="fas fa-exclamation-circle"></span>
-        <small class="msg" id="msg">Prueba</small>
-        <span class="close_btn" onclick="close_btn()">
-            <span class="fas fa-times"></span>
-        </span>
-    </div>
-    <div class="container" id="container">
-        <div class="form-container sign-up-container">
-            <form id="form_reg" action="/" method="GET">
-                <br />
-                <br />
-                <h1>Crear cuenta</h1>
-                <span>Usa tu email y crea una contraseña para registrarte</span>
-                <br />
-                <div class="form_reg">
-                    <input type="text" placeholder="Identificación" id="Identificacion" />
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
-                    <small id='error'></small>
-                </div>
-                <div class="form_reg">
-                    <input type="text" placeholder="Dirección" id="Direccion" />
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
-                    <small id='error'></small>
-                </div>
-                <div class="form_reg">
-                    <input type="text" placeholder="Nombre de Usuario" id="user_name" />
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
-                    <small id='error'></small>
-                </div>
-                <div class="form_reg">
-                    <input type="email" placeholder="E-mail" id="email" />
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
-                    <small id='error'></small>
-                </div>
-                <div class="form_reg">
-                    <input type="password" placeholder="Contraseña" id="password" />
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
-                    <small id='error'></small>
-                </div>
-                <div class="form_reg">
-                    <input type="password" placeholder="Confirmar Contraseña" id="confirm_password" />
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
-                    <small id='error'></small>
-                </div>
-                <div class="form_reg">
-                    <input type="text" placeholder="Zona" id="Zona" />
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
-                    <small id='error'></small>
-                </div>
-                <div class="select">
-                    <select name="typeOptions" id="format">
-                        <option selected disabled>Seleccione un tipo de Usuario</option>
-                        <option value="coordinadorZona">Coordinador de zona</option>
-                        <option value="asesorComercial">Asesor Comercial</option>
-                    </select>
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
-                    <small id='error'></small>
-                </div>
-                <br/>
-                <button type="submit">Registrarse</button>
-            </form>
+
+    <body>
+        <div class="alert hide">
+            <span class="fas fa-exclamation-circle"></span>
+            <small class="msg" id="msg">Error Message</small>
+            <span class="close_btn" onclick="close_btn()">
+                <span class="fas fa-times"></span>
+            </span>
         </div>
-        <div class="form-container sign-in-container">
-            <form id="form_si" action="/" method="GET">
-                <br />
-                <br />
-                <br />
-                <h1>Iniciar Sesion</h1>
-                <br />
-                <span>Usa tu email y Contraseña</span>
-                <br />
-                <br />
-                <div class="form_si">
-                    <input type="email" placeholder="E-mail" id="emailSI" />
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
-                    <small id='error'></small>
-                </div>
-                <div class="form_si">
-                    <input type="password" placeholder="Contraseña" id="passwordSI" />
-                    <i class="fas fa-check-circle"></i>
-                    <i class="fas fa-exclamation-circle"></i>
-                    <small id='error'></small>
-                </div>
-                </br>
-                <a href="#">Olvidaste tu contraseña?</a>
-                <br />
-                <br />
-                <button type="submit">Iniciar Sesion</button>
-            </form>
-        </div>
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <h1>Bienvenido !</h1>
-                    <p>¿Ya tienes una cuenta? haz clic en iniciar sesion</p>
-                    <button class="ghost" id="signIn">Iniciar Sesion</button>
-                </div>
-                <div class="overlay-panel overlay-right">
-                    <h1>Hola !</h1>
-                    <p>Ingresa tu datos personales para crear una cuenta y tener acceso a más</p>
-                    <button class="ghost" id="signUp">Registrarse</button>
-                </div>
+        <div class="container" id="container">
+            <div class="form-container sign-in-container">
+                <form id="form_si" action="home.html" method="post">
+                    <br />
+                    <h1>Iniciar Sesion</h1>
+                    <div class="logo-box">
+                        <img src="images/Logo.png" width="150" height="150" alt="De alto Tumerqué LTDA Logo">
+                    </div>
+                    <span>Usa tu email y Contraseña para Ingresar</span>
+                    <br />
+                    <br />
+                    <div class="form_si">
+                        <input type="email" placeholder="E-mail" id="emailSI" />
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small id='error'></small>
+                    </div>
+                    <div class="form_si">
+                        <input type="password" placeholder="Contraseña" id="passwordSI" />
+                        <i class="fas fa-check-circle"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <small id='error'></small>
+                    </div>
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+                    <br />
+                    <br />
+                    <button type="submit">Iniciar Sesion</button>
+                </form>
             </div>
         </div>
-    </div>
-</body>
-<script src="js/sourcefunc.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    </body>
+    <script src="js/indexFunc.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 </html>

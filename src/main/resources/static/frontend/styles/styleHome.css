@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Reem+Kufi&display=swap");
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Reem Kufi", sans-serif;
+}
+body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url(/images/bg.png);
+}
+header{
+    background-color: rgba(211, 255, 254 , 0.5);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+header nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 142px;
+    padding-right: 142px;
+}
+
+header nav h1{
+    font-size: 28px;
+    font-weight: 800;
+    color: whitesmoke;
+    text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+header nav .tabs{
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    border-radius: 8px;
+}
+
+header nav .tabs .tab{
+    display: block;
+}
+
+header nav .tabs .tab a[data-switcher] {
+    display: inline-block;
+    text-align: center;
+    padding: 15px 30px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    background-color: rgba(82, 200, 198, 0.5);
+}
+
+header nav .tabs .tab:hover{
+    background-color: rgba(1, 205, 200 , 0.5);
+    font-weight: 700;
+}
+
+header nav .tabs .tab.is-active{
+    background-color: rgba(1, 205, 200 , 0.5);
+    font-weight: 700;
+}
+
+main{
+    padding-left: 142px;
+    padding-right: 142px;
+}
+
+.pages{
+    margin-top: 100px;
+    padding: 50px 30px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+.pages .page{
+    display: none;
+}
+
+.pages .page.is-active{
+    display: block;
+}

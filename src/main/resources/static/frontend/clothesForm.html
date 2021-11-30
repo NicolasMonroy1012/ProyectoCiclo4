@@ -15,67 +15,70 @@
   </head>
   <body>
     <div class="container" id="container">
-      <h1>Información del Producto</h1>
-      <div class="form_reg">
-        <input type="text" placeholder="Referencia" id="reference" />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small id="error"></small>
-      </div>
-      <div class="form_reg">
-        <input type="text" placeholder="Categoria" id="category" />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small id="error"></small>
-      </div>
-      <div class="form_reg">
-        <input type="text" placeholder="Tamaño" id="size" />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small id="error"></small>
-      </div>
-      <div class="form_reg">
-        <input type="text" placeholder="Descripción" id="description" />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small id="error"></small>
-      </div>
-      <div class="form_reg">
-        <select name="typeOptions" id="format">
-          <option selected disabled>
-            Seleccione un tipo de disponibilidad
-          </option>
-          <option value="coordinadorZona">true</option>
-          <option value="asesorComercial">false</option>
-        </select>
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small id="error"></small>
-      </div>
-      <div class="form_reg">
-        <input type="number" placeholder="Precio" id="price" />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small id="error"></small>
-      </div>
-      <div class="form_reg">
-        <input type="text" placeholder="Cantidad" id="quantity" />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small id="error"></small>
-      </div>
-      <div class="form_reg">
-        <input
-          type="text"
-          placeholder="URL de la fotografia"
-          id="photography"
-        />
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-exclamation-circle"></i>
-        <small id="error"></small>
-      </div>
+      <form id="form_reg" action="/" method="GET">
+        <h1>Información del Producto</h1>
+        <div class="form_reg">
+          <input type="text" placeholder="Referencia" id="reference" />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small id="error"></small>
+        </div>
+        <div class="form_reg">
+          <input type="text" placeholder="Categoria" id="category" />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small id="error"></small>
+        </div>
+        <div class="form_reg">
+          <input type="text" placeholder="Tamaño" id="size" />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small id="error"></small>
+        </div>
+        <div class="form_reg">
+          <input type="text" placeholder="Descripción" id="description" />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small id="error"></small>
+        </div>
+        <div class="form_reg">
+          <select class="select" name="typeOptions" id="format">
+            <option selected disabled>
+              Seleccione un tipo de disponibilidad
+            </option>
+            <option value="coordinadorZona">true</option>
+            <option value="asesorComercial">false</option>
+          </select>
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small id="error"></small>
+        </div>
+        <div class="form_reg">
+          <input type="number" placeholder="Precio" id="price" />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small id="error"></small>
+        </div>
+        <div class="form_reg">
+          <input type="text" placeholder="Cantidad" id="quantity" />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small id="error"></small>
+        </div>
+        <div class="form_reg">
+          <input
+            type="text"
+            placeholder="URL de la fotografia"
+            id="photography"
+          />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small id="error"></small>
+        </div>
+        <button type="submit">Registrarse</button>
+      </form>
     </div>
   </body>
-  <script src="sourcefunc.js"></script>
+  <script src="js/sourcefunc.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </html>

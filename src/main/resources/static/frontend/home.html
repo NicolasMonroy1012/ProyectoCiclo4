@@ -2,41 +2,141 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inicio | De Alto Tumerqué LTDA</title>
-    <link rel="stylesheet" href="styles/styleHome.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
-        integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio | De Alto Tumerqué LTDA</title>
+  <link rel="stylesheet" href="styles/styleHome.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+    integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous" />
 </head>
 
 <body>
-    <header>
-        <nav>
-            <h1>De Alto Tumerqué LTDA</h1>
-            <ul class="tabs">
-                <li class="tab is-active">
-                    <a data-switcher data-tab="1">Tabla Usuarios</a>
-                </li>
-                <li class="tab">
-                    <a data-switcher data-tab="2">Tabla Productos</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="pages">
-            <div class="page is-active" data-page="1">
-                <h2>Page 1</h2>
-                <p>Tabla de Usuarios</p>
-            </div>
-            <div class="page" data-page="2">
-                <h2>Page 2</h2>
-                <p>Tabla de Productos</p>
-            </div>
-        </section>
-    </main>
+  <header>
+    <nav>
+      <h1>De Alto Tumerqué LTDA</h1>
+      <ul class="tabs">
+        <li class="tab is-active">
+          <a data-switcher data-tab="1">Tabla Usuarios</a>
+        </li>
+        <li class="tab">
+          <a data-switcher data-tab="2">Tabla Productos</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <div class="popup">
+    <div class="editFormContainer">
+      <img src="/images/close.png" alt="close" height="20" width="20" class="close-popup">
+      </br>
+      <h2 class="textT">Edición de la Información del Usuario</h2>
+      </br>
+      <form action="" class="editForm">
+        <div class="formData">
+          <div class="form_reg">
+            <input type="text" placeholder="Identificación" id="identificacion" />
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small id='error'></small>
+          </div>
+          <div class="form_reg">
+            <input type="text" placeholder="Nombre de Usuario" id="user_name" />
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small id='error'></small>
+          </div>
+          <div class="form_reg">
+            <input type="text" placeholder="Dirección" id="direccion" />
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small id='error'></small>
+          </div>
+          <div class="form_reg">
+            <input type="email" placeholder="E-mail" id="email" />
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small id='error'></small>
+          </div>
+          <div class="form_reg">
+            <input type="password" placeholder="Contraseña" id="password" />
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small id='error'></small>
+          </div>
+          <div class="form_reg">
+            <input type="password" placeholder="Confirmar Contraseña" id="confirm_password" />
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small id='error'></small>
+          </div>
+          <div class="form_reg">
+            <input type="text" placeholder="Zona" id="zona" />
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small id='error'></small>
+          </div>
+          <div class="select">
+            <select name="typeOptions" id="format">
+              <option selected disabled>Seleccione un tipo de Usuario</option>
+              <option value="coordinadorZona">Coordinador de zona</option>
+              <option value="asesorComercial">Asesor Comercial</option>
+            </select>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small id='error'></small>
+          </div>
+          <br />
+          <button type="submit">Registrarse</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <main>
+    <section class="pages">
+      <div class="page is-active" data-page="1">
+        <h2 onclick="traerInfoUsers()">Tabla de Usuarios</h2>
+        </br>
+        <table class="table_model">
+          <thead>
+            <tr>
+              <th>Identificación</th>
+              <th>Nombre</th>
+              <th>Dirección</th>
+              <th>Telefono</th>
+              <th>E-mail</th>
+              <th>Contraseña</th>
+              <th>Zona</th>
+              <th>Tipo</th>
+              <th>Editar</th>
+              <th>Borrar</th>
+            </tr>
+          </thead>
+          <tbody id="table_modelU"></tbody>
+        </table>
+      </div>
+      <div class="page" data-page="2">
+        <h2 onclick="traerInfoProductos()">Tabla de Productos</h2>
+        </br>
+        <table class="table_model">
+          <thead>
+            <tr>
+              <th>Referencia</th>
+              <th>Categoria</th>
+              <th>Tamaño</th>
+              <th>Descripción</th>
+              <th>Disponibilidad</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>URL de la Fotográfia</th>
+              <th>Editar</th>
+              <th>Borrar</th>
+            </tr>
+          </thead>
+          <tbody id="table_modelP"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
 </body>
 <script src="js/homeFunc.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

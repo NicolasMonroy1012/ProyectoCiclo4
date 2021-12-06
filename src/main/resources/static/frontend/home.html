@@ -27,7 +27,7 @@
   </header>
   <div class="popup">
     <div class="editFormContainer">
-      <img src="/images/close.png" alt="close" height="20" width="20" class="close-popup">
+      <img src="/images/close.png" alt="close" height="20" width="20" class="close-popup" onclick="btCloseEdit()">
       </br>
       <h2 class="textT">Edición de la Información del Usuario</h2>
       </br>
@@ -52,6 +52,12 @@
             <small id='error'></small>
           </div>
           <div class="form_reg">
+            <input type="text" placeholder="Numero de celular" id="cellPhone" />
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small id='error'></small>
+          </div>
+          <div class="form_reg">
             <input type="email" placeholder="E-mail" id="email" />
             <i class="fas fa-check-circle"></i>
             <i class="fas fa-exclamation-circle"></i>
@@ -70,7 +76,7 @@
             <small id='error'></small>
           </div>
           <div class="form_reg">
-            <input type="text" placeholder="Zona" id="zona" />
+            <input type="text" placeholder="Zona" id="zone" />
             <i class="fas fa-check-circle"></i>
             <i class="fas fa-exclamation-circle"></i>
             <small id='error'></small>
@@ -86,7 +92,7 @@
             <small id='error'></small>
           </div>
           <br />
-          <button type="submit">Registrarse</button>
+          <button type="submit" onclick="editarInfoUser()">Actualizar</button>
         </div>
       </form>
     </div>

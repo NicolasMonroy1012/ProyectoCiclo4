@@ -45,4 +45,6 @@ public class UserRepository {
         userCRUDRepository.delete(user);
     }
 
+    public Optional<User> lastUserId(){return userCRUDRepository.findTopByOrderByIdDesc();}
+
 }

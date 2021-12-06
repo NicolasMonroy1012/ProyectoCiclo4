@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * This class allows mapping the entity user
@@ -31,6 +32,11 @@ public class UserController {
     @GetMapping("/all")
     public List<User> getAll() {
         return userService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<User> getUser(@PathVariable("id") int userId){
+        return userService.getUser(userId);
     }
 
     /**

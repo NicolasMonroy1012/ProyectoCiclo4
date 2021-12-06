@@ -26,14 +26,23 @@ public class UserService {
     }
 
     public User register(User user) {
+        Optional<User> userLastId = userRepository.lastUserId();
         if (user.getId() == null) {
-            return user;
-        } else {
+            if (userLastId.isEmpty()) {
+                user.setId(1);
+            } else {
+                user.setId(userLastId.get().getId() + 1);
+            }
+        }
+        Optional<User> e = userRepository.getUser(user.getId());
+        if (e.isEmpty()) {
             if (emailExists(user.getEmail()) == false) {
                 return userRepository.save(user);
             } else {
                 return user;
             }
+        } else {
+            return user;
         }
     }
 

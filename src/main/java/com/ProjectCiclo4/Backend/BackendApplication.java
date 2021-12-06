@@ -1,6 +1,7 @@
 package com.ProjectCiclo4.Backend;
 
 import com.ProjectCiclo4.Backend.repository.crud.ClothesCRUDRepository;
+import com.ProjectCiclo4.Backend.repository.crud.OrderCRUDRepository;
 import com.ProjectCiclo4.Backend.repository.crud.UserCRUDRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -17,6 +18,8 @@ public class BackendApplication implements CommandLineRunner {
     private UserCRUDRepository userCRUDRepository;
     @Autowired
     private ClothesCRUDRepository clothesCRUDRepository;
+    @Autowired
+    private OrderCRUDRepository orderCRUDRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(BackendApplication.class, args);

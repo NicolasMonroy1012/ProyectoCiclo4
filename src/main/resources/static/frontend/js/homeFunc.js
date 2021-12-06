@@ -16,7 +16,7 @@ window.onload = () => {
 };
 
 function switchPage(page_id) {
-//  console.log(page_id)
+  //  console.log(page_id)
   const current_page = document.querySelector(".pages .page.is-active");
   current_page.classList.remove("is-active");
 
@@ -55,72 +55,75 @@ function traerInfoUsers() {
                     `;
       }
       $("#resultado").append("#tabla_modelU");
+      showEditPopUp();
     },
   });
 }
 
+function btCloseEdit() {
+  document.querySelector(".popup").style.display = "none";
+}
+
+function showEditPopUp() {
+  document.getElementById("btEdit").addEventListener("click", function () {
+    document.querySelector(".popup").style.display = "flex";
+  });
+}
+
 function edicionUser(idE) {
-  document.getElementById("btEdit").addEventListener("click",function(){
-    document.querySelector(".popup").style.display="flex";
-  })
-  var id = idE
-  console.log(idE)
+  var id = idE;
+  console.log(idE);
   $.ajax({
-      url: "http://localhost:8080/api/user/"+idE,
-      type: "GET",
-      datatype: "JSON",
-      success: function(respuesta) {
-          console.log(respuesta.items);
-          items = respuesta.items;
-          console.log(items.length)
-          for (i = 0; i < items.length; i++) {
-              if (items[i].id == id) {
-                  console.log("encontré el cliente");
-                  $("#identificacion").val(items[i].identification);
-                  $("#user_name").val(items[i].name);
-                  $("#direccion").val(items[i].address);
-                  $("#category_id").val(items[i].cellPhone);
-                  $("#name").val(items[i].name);
-              }
-          }
-
-      }
-
+    url: "http://localhost:8080/api/user/" + idE,
+    type: "GET",
+    datatype: "JSON",
+    success: function (respuesta) {
+      console.log(respuesta);
+      $("#identificacion").val(respuesta.identification);
+      $("#user_name").val(respuesta.name);
+      $("#direccion").val(respuesta.address);
+      $("#cellPhone").val(respuesta.cellPhone);
+      $("#email").val(respuesta.email);
+      $("#password").val(respuesta.password);
+      $("#zone").val(respuesta.zone);
+    },
   });
 }
 
 function editarInfoUser() {
   let myData = {
-      id: $("#id").val(),
-      brand: $("#brand").val(),
-      model: $("#model").val(),
-      category_id: $("#category_id").val(),
-      name: $("#name").val(),
+    identificacion: $("#identificacion").val(),
+    user_name: $("#user_name").val(),
+    direccion: $("#direccion").val(),
+    cellPhone: $("#cellPhone").val(),
+    email: $("#email").val(),
+    password: $("#password").val(),
+    zone: $("#zone").val(),
+
   };
   let dataToSend = JSON.stringify(myData);
   $.ajax({
-      url: "http://localhost:8080/api/Skate/update",
-      type: "PUT",
-      data: dataToSend,
-      contentType: "application/JSON",
-      datatype: "JSON",
-      success: function(respuesta) {
-          $("#id").val("");
-          $("#brand").val("");
-          $("model").val("");
-          $("#category_id").val("");
-          $("#name").val("");
-          traerInfoSkate();
-          alert("Se ha actualizado la información de manera exitosa")
-      }
+    url: "http://localhost:8080/api/user/update",
+    type: "PUT",
+    data: dataToSend,
+    contentType: "application/JSON",
+    datatype: "JSON",
+    success: function (respuesta) {
+      $("#identificacion").val("");
+        $("#user_name").val("");
+        $("#direccion").val("");
+        $("#cellPhone").val("");
+        $("#email").val("");
+        $("#password").val("");
+        $("#zone").val("");
+        traerInfoUsers();
+      alert("Se ha actualizado la información de manera exitosa");
+    },
   });
 }
 
-
-
-
 //-------------------Funciones para la tabla de Productos------------------------------
-function traerInfoProductos(){
+function traerInfoProductos() {
   $("#table_model").empty();
   $.ajax({
     url: "http://localhost:8080/api/clothe/all",

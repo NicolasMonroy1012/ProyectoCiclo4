@@ -22,6 +22,10 @@ public class OrderService {
         return orderRepository.getOrder(id);
     }
 
+    public List<Order> getByZone(String zone){
+        return orderRepository.getByZone(zone);
+    }
+
     public Order create(Order order){
         Optional<Order> orderLastId = orderRepository.lastUserId();
         if (order.getId() == null) {

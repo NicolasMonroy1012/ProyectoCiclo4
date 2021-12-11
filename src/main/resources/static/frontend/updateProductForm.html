@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Productos | De Alto Tumerqué LTDA</title>
+    <link rel="stylesheet" href="styles/styleHome.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+    integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous" />
+</head>
+<body>
+    <div class="popup">
+        <div class="editFormContainer">
+          <img src="/images/close.png" alt="close" height="20" width="20" class="close-popup" onclick="btCloseEdit()">
+          </br>
+          <h2 class="textT">Edición de la Información del Producto</h2>
+          </br>
+            <div class="formData">
+              <div class="form_reg">
+                <input type="text" placeholder="Referencia" id="referenceU" />
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small id='error'></small>
+              </div>
+              <div class="form_reg">
+                <input type="text" placeholder="Categoria" id="categoryU" />
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small id='error'></small>
+              </div>
+              <div class="form_reg">
+                <input type="text" placeholder="Tamaño" id="sizeU" />
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small id='error'></small>
+              </div>
+              <div class="form_reg">
+                <input type="text" placeholder="Descripción" id="descriptionU" />
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small id='error'></small>
+              </div>
+              <div class="select">
+                <select name="form-control" id="availabilityU">
+                  <option selected disabled>Seleccione la Disponibilidad</option>
+                  <option>true</option>
+                  <option>false</option>
+                </select>
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small id='error'></small>
+              </div>
+              <div class="form_reg">
+                <input type="number" placeholder="Precio" id="priceU" />
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small id='error'></small>
+              </div>
+              <div class="form_reg">
+                <input type="number" placeholder="Cantidad" id="quantityU" />
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small id='error'></small>
+              </div>
+              <div class="form_reg">
+                <input type="text" placeholder="URL de la Fotográfia" id="photographyU" />
+                <i class="fas fa-check-circle"></i>
+                <i class="fas fa-exclamation-circle"></i>
+                <small id='error'></small>
+              </div>
+              <br />
+              <button type="submit" onclick="editInfo('productsTable')">Actualizar</button>
+            </div>
+        </div>
+      </div>
+</body>
+<script src="js/homeFunc.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</html>

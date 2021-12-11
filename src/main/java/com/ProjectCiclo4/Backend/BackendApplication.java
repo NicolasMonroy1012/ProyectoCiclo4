@@ -29,5 +29,6 @@ public class BackendApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         userCRUDRepository.deleteAll();
         clothesCRUDRepository.deleteAll();
+        orderCRUDRepository.deleteAll();
     }
 }

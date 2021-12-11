@@ -22,85 +22,16 @@
         <li class="tab">
           <a data-switcher data-tab="2">Tabla Productos</a>
         </li>
+        <li class="tab">
+          <a data-switcher data-tab="3">Tabla Ordenes</a>
+        </li>
       </ul>
     </nav>
   </header>
-  <div class="popup">
-    <div class="editFormContainer">
-      <img src="/images/close.png" alt="close" height="20" width="20" class="close-popup" onclick="btCloseEdit()">
-      </br>
-      <h2 class="textT">Edición de la Información del Usuario</h2>
-      </br>
-      <form action="" class="editForm">
-        <div class="formData">
-          <div class="form_reg">
-            <input type="text" placeholder="Identificación" id="identificacion" />
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small id='error'></small>
-          </div>
-          <div class="form_reg">
-            <input type="text" placeholder="Nombre de Usuario" id="user_name" />
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small id='error'></small>
-          </div>
-          <div class="form_reg">
-            <input type="text" placeholder="Dirección" id="direccion" />
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small id='error'></small>
-          </div>
-          <div class="form_reg">
-            <input type="text" placeholder="Numero de celular" id="cellPhone" />
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small id='error'></small>
-          </div>
-          <div class="form_reg">
-            <input type="email" placeholder="E-mail" id="email" />
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small id='error'></small>
-          </div>
-          <div class="form_reg">
-            <input type="password" placeholder="Contraseña" id="password" />
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small id='error'></small>
-          </div>
-          <div class="form_reg">
-            <input type="password" placeholder="Confirmar Contraseña" id="confirm_password" />
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small id='error'></small>
-          </div>
-          <div class="form_reg">
-            <input type="text" placeholder="Zona" id="zone" />
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small id='error'></small>
-          </div>
-          <div class="select">
-            <select name="typeOptions" id="format">
-              <option selected disabled>Seleccione un tipo de Usuario</option>
-              <option value="coordinadorZona">Coordinador de zona</option>
-              <option value="asesorComercial">Asesor Comercial</option>
-            </select>
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small id='error'></small>
-          </div>
-          <br />
-          <button type="submit" onclick="editarInfoUser()">Actualizar</button>
-        </div>
-      </form>
-    </div>
-  </div>
   <main>
     <section class="pages">
       <div class="page is-active" data-page="1">
-        <h2 onclick="traerInfoUsers()">Tabla de Usuarios</h2>
+        <h2 onclick="bringInfoTable('usersTable')">Tabla de Usuarios</h2>
         </br>
         <table class="table_model">
           <thead>
@@ -119,9 +50,27 @@
           </thead>
           <tbody id="table_modelU"></tbody>
         </table>
+        </br>
+        </br>
+        </br>
+        </br>
+        <div class="btContainer">
+          <button type="button" class="btModel" onclick="bringInfoTable('usersTable')">
+            <span class="button__text">Mostrar Tabla</span>
+            <span class="button__icon">
+              <i class="far fa-eye"></i>
+            </span>
+          </button>
+          <button type="button" class="btModel" onclick="showCreateForm()">
+            <span class="button__text">Nuevo Usuario</span>
+            <span class="button__icon">
+              <i class="fas fa-plus"></i>
+            </span>
+          </button>
+        </div>
       </div>
       <div class="page" data-page="2">
-        <h2 onclick="traerInfoProductos()">Tabla de Productos</h2>
+        <h2 onclick=" bringInfoTable('productsTable')">Tabla de Productos</h2>
         </br>
         <table class="table_model">
           <thead>
@@ -140,9 +89,67 @@
           </thead>
           <tbody id="table_modelP"></tbody>
         </table>
+        </br>
+        </br>
+        </br>
+        </br>
+        <div class="btContainer">
+          <button type="button" class="btModel" onclick="bringInfoTable('productsTable')">
+            <span class="button__text">Mostrar Tabla</span>
+            <span class="button__icon">
+              <i class="far fa-eye"></i>
+            </span>
+          </button>
+          <button type="button" class="btModel" onclick="">
+            <span class="button__text">Nuevo Usuario</span>
+            <span class="button__icon">
+              <i class="fas fa-plus"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="page" data-page="3">
+        <h2 onclick=" bringInfoTable('ordersTable')">Tabla de Ordenes</h2>
+        </br>
+        <table class="table_model">
+          <thead>
+            <tr>
+              <th>Referencia</th>
+              <th>Categoria</th>
+              <th>Tamaño</th>
+              <th>Descripción</th>
+              <th>Disponibilidad</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>URL de la Fotográfia</th>
+              <th>Editar</th>
+              <th>Borrar</th>
+            </tr>
+          </thead>
+          <tbody id="table_modelO"></tbody>
+        </table>
+        </br>
+        </br>
+        </br>
+        </br>
+        <div class="btContainer">
+          <button type="button" class="btModel" onclick="bringInfoTable('productsTable')">
+            <span class="button__text">Mostrar Tabla</span>
+            <span class="button__icon">
+              <i class="far fa-eye"></i>
+            </span>
+          </button>
+          <button type="button" class="btModel" onclick="">
+            <span class="button__text">Nuevo Usuario</span>
+            <span class="button__icon">
+              <i class="fas fa-plus"></i>
+            </span>
+          </button>
+        </div>
       </div>
     </section>
   </main>
+  <div id="admonUsersBar"></div>
 </body>
 <script src="js/homeFunc.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

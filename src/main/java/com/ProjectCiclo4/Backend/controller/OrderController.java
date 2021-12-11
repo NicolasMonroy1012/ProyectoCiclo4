@@ -27,6 +27,9 @@ public class OrderController {
         return orderService.getOrder(id);
     }
 
+    @GetMapping("/zona/{zone}")
+    public List<Order> getAllByZone(@PathVariable("zone") String zone){return orderService.getByZone(zone);}
+
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public Order create(@RequestBody Order order) {

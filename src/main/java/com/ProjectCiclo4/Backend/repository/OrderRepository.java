@@ -23,6 +23,10 @@ public class OrderRepository {
         return orderCRUDRepository.findById(id);
     }
 
+    public List<Order> getByZone(String zone){
+        return (List<Order>) orderCRUDRepository.findByZone(zone);
+    }
+
     public Order create(Order order) {
         return orderCRUDRepository.save(order);
     }

@@ -28,7 +28,9 @@ public class OrderController {
     }
 
     @GetMapping("/zona/{zone}")
-    public List<Order> getAllByZone(@PathVariable("zone") String zone){return orderService.getByZone(zone);}
+    public List<Order> getAllByZone(@PathVariable("zone") String zone) {
+        return orderService.getByZone(zone);
+    }
 
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
@@ -46,6 +48,21 @@ public class OrderController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int id) {
         return orderService.delete(id);
+    }
+
+    @GetMapping("/salesman/{id}")
+    public List<Order> ordersBySalesmanID(@PathVariable("id") Integer id) {
+        return orderService.findOrdersBySalesmanID(id);
+    }
+
+    @GetMapping("/state/{state}/{id}")
+    public List<Order> ordersBySalesmanIDAndState(@PathVariable("state") String state, @PathVariable("id") Integer id) {
+        return orderService.findOrdersBySalesmanByState(state, id);
+    }
+
+    @GetMapping("/date/{date}/{id}")
+    public List<Order> ordersBySalesmanIDAndDate(@PathVariable("date") String dateSTR, @PathVariable("id") Integer id) {
+        return orderService.findOrderBySalesmanAndDate(dateSTR, id);
     }
 }
 

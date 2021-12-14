@@ -14,19 +14,19 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    public List<Order> getAll(){
+    public List<Order> getAll() {
         return orderRepository.getAll();
     }
 
-    public Optional<Order> getOrder(int id){
+    public Optional<Order> getOrder(int id) {
         return orderRepository.getOrder(id);
     }
 
-    public List<Order> getByZone(String zone){
+    public List<Order> getByZone(String zone) {
         return orderRepository.getByZone(zone);
     }
 
-    public Order create(Order order){
+    public Order create(Order order) {
         Optional<Order> orderLastId = orderRepository.lastUserId();
         if (order.getId() == null) {
             if (orderLastId.isEmpty()) {
@@ -68,5 +68,17 @@ public class OrderService {
             return true;
         }).orElse(false);
         return aBoolean;
+    }
+
+    public List<Order> findOrdersBySalesmanID(Integer id) {
+        return orderRepository.ordersBySalesManByID(id);
+    }
+
+    public List<Order> findOrdersBySalesmanByState(String state, Integer id) {
+        return orderRepository.ordersSalesmanByState(state, id);
+    }
+
+    public List<Order> findOrderBySalesmanAndDate(String dateSTR, Integer id) {
+        return orderRepository.ordersSalesmanByDate(dateSTR, id);
     }
 }

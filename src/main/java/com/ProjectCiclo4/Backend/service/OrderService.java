@@ -12,8 +12,11 @@ import java.util.Optional;
 @Service
 public class OrderService {
     @Autowired
+    /*
+     * Instance of UserRepository class
+     */
     private OrderRepository orderRepository;
-
+    
     public List<Order> getAll() {
         return orderRepository.getAll();
     }

@@ -35,4 +35,12 @@ public class ClothesRepository {
     public void delete(Clothe clothe) {
         clothesCRUDRepository.delete(clothe);
     }
+
+    public List<Clothe> getByPrice(double price){
+        return clothesCRUDRepository.findByPrice(price);
+    }
+
+    public List<Clothe> getByDescriptionContains(String description){
+        return clothesCRUDRepository.findByDescriptionContainingIgnoreCase(description);
+    }
 }

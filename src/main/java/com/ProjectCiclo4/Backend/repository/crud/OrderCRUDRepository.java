@@ -15,4 +15,5 @@ public interface OrderCRUDRepository extends MongoRepository<Order, Integer> {
     List<Order> findByStatus(final String status);
 
     Optional<Order>findTopByOrderByIdDesc();
+
 }

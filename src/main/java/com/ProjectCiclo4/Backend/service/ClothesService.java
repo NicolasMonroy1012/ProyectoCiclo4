@@ -78,4 +78,11 @@ public class ClothesService {
         return aBoolean;
     }
 
+    public List<Clothe> getByPrice(double price){
+        return clotheRepository.getByPrice(price);
+    }
+
+    public List<Clothe> getByDescription(String description){
+        return clotheRepository.getByDescriptionContains(description);
+    }
 }
